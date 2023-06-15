@@ -6,10 +6,6 @@ let score = JSON.parse(localStorage.getItem('score')) || {
 
 updateScoreElement();
 
-document.querySelector('.js-result').innerHTML = result;
-
-document.querySelector('.js-moves').innerHTML = `You picked ${playerMove}. Computer picked ${computerMove}.`;
-
 function pickComputerMove() {
   let randomNumber = Math.random();
   let computerMove = '';
@@ -47,9 +43,9 @@ function playGame(playerMove) {
     if(computerMove === 'scissors') result = 'Tie';
   }
 
-  if(result === 'You win') score.wins += 1;
-  if(result === 'You lose') score.losses += 1;
-  if(result === 'Tie') score.ties += 1;
+  if(result === 'You win') score.wins ++;
+  if(result === 'You lose') score.losses ++;
+  if(result === 'Tie') score.ties ++;
 
   localStorage.setItem('score', JSON.stringify(score));
   console.log(score);
