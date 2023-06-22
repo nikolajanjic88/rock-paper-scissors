@@ -19,6 +19,25 @@ function pickComputerMove() {
   return computerMove;
 }
 
+let isAutoPlaying = false;
+let intervalId;
+
+function autoPlay() {
+  if(!isAutoPlaying) {
+    intervalId = setInterval(function(){
+      const playerMove = pickComputerMove();
+      playGame(playerMove);
+    }, 1000)
+  isAutoPlaying = true;
+  document.querySelector('.auto-play-button').innerHTML = 'Stop Playing';
+  } else {
+    clearInterval(intervalId);
+    document.querySelector('.auto-play-button').innerHTML = 'Auto Play';
+    isAutoPlaying = false;
+  }
+  
+}
+
 function playGame(playerMove) {
 
   let computerMove = pickComputerMove();
